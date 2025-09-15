@@ -1,0 +1,13 @@
+{
+  "name": "@inu/utils",
+  "version": "0.0.0",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/typescript-config": "workspace:*",
+    "class-variance-authority": "catalog:",
+    "tailwind-merge": "catalog:"
+  }
+}

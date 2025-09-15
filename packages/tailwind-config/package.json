@@ -1,0 +1,26 @@
+{
+  "name": "@inu/tailwind-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint"
+  },
+  "exports": {
+    "./style.css": "./style.css"
+  },
+  "prettier": "@inu/prettier-config",
+  "dependencies": {
+    "@tailwindcss/typography": "catalog:",
+    "eslint": "catalog:",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "catalog:"
+  },
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/prettier-config": "workspace:*",
+    "prettier": "catalog:"
+  }
+}

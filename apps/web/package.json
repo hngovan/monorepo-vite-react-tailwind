@@ -1,0 +1,50 @@
+{
+  "name": "web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .cache dist .turbo node_modules",
+    "dev": "bun env:run dev",
+    "env:copy-example": "shx -- cp -n .env.example .env",
+    "env:remove": "shx -- rm -f .env",
+    "env:run": "dotenv -- vite --configLoader runner",
+    "build": "tsc -b && vite build",
+    "format": "prettier --check . --ignore-path .prettierignore --ignore-path ../../.gitignore",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "preview": "bun env:run preview",
+    "start": "bun env:run",
+    "typecheck": "tsc --build"
+  },
+  "dependencies": {
+    "@inu/ui": "workspace:*",
+    "@radix-ui/react-icons": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@tanstack/react-form": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "@tanstack/react-router": "catalog:",
+    "@tanstack/router-devtools": "catalog:",
+    "dotenv-cli": "catalog:",
+    "next-themes": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "sonner": "catalog:",
+    "tailwindcss": "catalog:",
+    "valibot": "catalog:"
+  },
+  "prettier": "@inu/prettier-config",
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/prettier-config": "workspace:*",
+    "@inu/tailwind-config": "workspace:*",
+    "@inu/typescript-config": "workspace:*",
+    "@tanstack/router-plugin": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "eslint": "catalog:",
+    "globals": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "extends": "@inu/typescript-config/base.json",
+}
