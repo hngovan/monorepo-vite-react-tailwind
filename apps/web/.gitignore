@@ -25,3 +25,5 @@ dist-ssr
 
 # Temporary files and directories
 .tanstack
+
+.turbo

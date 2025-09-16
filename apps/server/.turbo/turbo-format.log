@@ -1,4 +1,0 @@
-[?9001h[?1004h[?25l[2J[m[H]0;C:\Users\admin\.bun\bin\bun.exe[?25h[35m[2m$[m [1m[2mprettier --check . --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache --write
-[22mChecking formatting...
-.env.example.gitignore[Keslint.config.js[K[K[K[Ksrc/env.ts[K[10Csrc/index.ts[Ksrc/server.ts[K[13Csrc/utils.ts[K[12Ctsconfig.json[K[13Ctsdown.config.ts[K[K[10CAll matched files use Prettier code style!
-[?9001l[?1004l

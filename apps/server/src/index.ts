@@ -49,6 +49,10 @@ app.get('/', c => {
 
 // ========================================================================= //
 
+app.on(['POST', 'GET'], `${env.PUBLIC_SERVER_API_PATH}/auth/*`, c => {
+  return auth.handler(c.req.raw)
+})
+
 app.use(
   `${env.PUBLIC_SERVER_API_PATH}/auth/*`,
   cors({
