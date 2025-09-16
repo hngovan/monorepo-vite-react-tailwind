@@ -1,13 +1,109 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Button } from '@inu/ui/components/button'
+import {
+  ExternalLinkIcon,
+  Link2Icon,
+  MoonIcon,
+  SunIcon
+} from '@radix-ui/react-icons'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { useTheme } from 'next-themes'
+import urlJoin from 'url-join'
+import { authClient } from '@/clients/authClient'
+import { env } from '@/env'
+import { postsLinkOptions } from '@/routes/_protected/posts/-validations/posts-link-options'
 
 export const Route = createFileRoute('/')({
-  component: Index
+  component: RouteComponent
 })
 
-function Index() {
+function RouteComponent() {
+  const { data: session } = authClient.useSession()
+  const { resolvedTheme, setTheme } = useTheme()
+
   return (
-    <div className='p-2'>
-      <h3>Welcome Home!</h3>
+    <div className='mt-1'>
+      {session?.user && (
+        <>
+          <div className='bg-elevated mb-5 flex flex-col rounded-lg p-3'>
+            <div>
+              Welcome, <span className='font-bold'>{session.user.name}</span>!
+            </div>
+            <div className='mt-3 flex gap-x-1.5'>
+              Click{' '}
+              <Link
+                {...postsLinkOptions}
+                className='flex items-center gap-x-1 text-blue-500 underline'
+              >
+                here <Link2Icon className='mt-0.5' />
+              </Link>{' '}
+              to view your posts.
+            </div>
+
+            <div className='mt-3'>
+              <p>
+                You can also interact with the OpenAPI specification using
+                Scalar:
+              </p>
+              <ul className='mt-2 list-disc space-y-1 pl-6'>
+                <li>
+                  <a
+                    href={urlJoin(
+                      env.PUBLIC_SERVER_URL,
+                      env.PUBLIC_SERVER_API_PATH
+                    )}
+                    target='_blank'
+                    className='inline-flex items-center gap-x-1 break-words text-blue-500 underline'
+                    rel='noreferrer'
+                  >
+                    API
+                    <ExternalLinkIcon className='mt-0.5 h-4 w-4' />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={urlJoin(
+                      env.PUBLIC_SERVER_URL,
+                      env.PUBLIC_SERVER_API_PATH,
+                      'auth',
+                      'reference'
+                    )}
+                    target='_blank'
+                    className='inline-flex items-center gap-x-1 break-words text-blue-500 underline'
+                    rel='noreferrer'
+                  >
+                    Auth
+                    <ExternalLinkIcon className='mt-0.5 h-4 w-4' />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </>
+      )}
+      {!session?.user && (
+        <div className='mt-4'>
+          Please{' '}
+          <Link to='/login' className='font-bold underline'>
+            log in
+          </Link>
+          .
+        </div>
+      )}
+
+      <div className='mt-3 flex items-center gap-x-2'>
+        Toggle theme:
+        <Button
+          className='h-9 w-9 rounded-full border-2 border-gray-500'
+          variant='ghost'
+          onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+        >
+          {resolvedTheme === 'dark' ? (
+            <MoonIcon className='text-yellow-300' />
+          ) : (
+            <SunIcon className='text-red-600' />
+          )}
+        </Button>
+      </div>
     </div>
   )
 }

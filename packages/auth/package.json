@@ -1,0 +1,33 @@
+{
+  "name": "@inu/auth",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "auth:schema:generate": "bunx @better-auth/cli generate --config ./src/cli-config.ts --output ../db/src/schemas/auth.ts",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "prettier": "@inu/prettier-config",
+  "dependencies": {
+    "@inu/db": "workspace:*",
+    "better-auth": "catalog:",
+    "url-join": "catalog:"
+  },
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/prettier-config": "workspace:*",
+    "@inu/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  }
+}

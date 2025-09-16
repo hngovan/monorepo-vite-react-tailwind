@@ -3,7 +3,7 @@ dist/
 out/
 
 .cache/
-.turbo/
+# .turbo/
 .vscode/
 
 .DS_Store

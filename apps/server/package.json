@@ -1,0 +1,42 @@
+{
+  "name": "server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "bun env:run tsx watch src/server.ts",
+    "env:copy-example": "shx -- cp -n .env.example .env",
+    "env:remove": "shx -- rm -f .env",
+    "env:run": "dotenv --",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "start": "NODE_ENV=production bun env:run node dist/server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "prettier": "@inu/prettier-config",
+  "dependencies": {
+    "@hono/node-server": "catalog:",
+    "@inu/api": "workspace:*",
+    "@inu/auth": "workspace:*",
+    "@inu/db": "workspace:*",
+    "hono": "catalog:",
+    "valibot": "catalog:"
+  },
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/prettier-config": "workspace:*",
+    "@inu/typescript-config": "workspace:*",
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:",
+    "dotenv-cli": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "shx": "catalog:",
+    "tsdown": "catalog:",
+    "tsx": "catalog:"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  }
+}

@@ -28,6 +28,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ui-add": "bunx shadcn@latest add"
   },
+  "prettier": "@inu/prettier-config",
   "dependencies": {
     "@radix-ui/react-avatar": "catalog:",
     "@radix-ui/react-dialog": "catalog:",
@@ -41,6 +42,5 @@
     "next-themes": "catalog:",
     "sonner": "catalog:",
     "tailwind-merge": "catalog:"
-  },
-  "prettier": "@inu/prettier-config"
+  }
 }

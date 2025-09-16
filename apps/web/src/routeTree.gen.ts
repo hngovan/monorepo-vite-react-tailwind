@@ -9,18 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicRegisterRouteImport } from './routes/_public/register'
 import { Route as PublicLoginRouteImport } from './routes/_public/login'
+import { Route as ProtectedLayoutRouteImport } from './routes/_protected/layout'
+import { Route as ProtectedPostsIndexRouteImport } from './routes/_protected/posts/index'
+import { Route as ProtectedPostsPostidIndexRouteImport } from './routes/_protected/posts/$postid/index'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRegisterRoute = PublicRegisterRouteImport.update({
+  id: '/_public/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicLoginRoute = PublicLoginRouteImport.update({
@@ -28,51 +31,92 @@ const PublicLoginRoute = PublicLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedLayoutRoute = ProtectedLayoutRouteImport.update({
+  id: '/_protected/layout',
+  path: '/layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedPostsIndexRoute = ProtectedPostsIndexRouteImport.update({
+  id: '/_protected/posts/',
+  path: '/posts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedPostsPostidIndexRoute =
+  ProtectedPostsPostidIndexRouteImport.update({
+    id: '/_protected/posts/$postid/',
+    path: '/posts/$postid/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/layout': typeof ProtectedLayoutRoute
   '/login': typeof PublicLoginRoute
+  '/register': typeof PublicRegisterRoute
+  '/posts': typeof ProtectedPostsIndexRoute
+  '/posts/$postid': typeof ProtectedPostsPostidIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/layout': typeof ProtectedLayoutRoute
   '/login': typeof PublicLoginRoute
+  '/register': typeof PublicRegisterRoute
+  '/posts': typeof ProtectedPostsIndexRoute
+  '/posts/$postid': typeof ProtectedPostsPostidIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/_protected/layout': typeof ProtectedLayoutRoute
   '/_public/login': typeof PublicLoginRoute
+  '/_public/register': typeof PublicRegisterRoute
+  '/_protected/posts/': typeof ProtectedPostsIndexRoute
+  '/_protected/posts/$postid/': typeof ProtectedPostsPostidIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/login'
+  fullPaths:
+    | '/'
+    | '/layout'
+    | '/login'
+    | '/register'
+    | '/posts'
+    | '/posts/$postid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login'
-  id: '__root__' | '/' | '/about' | '/_public/login'
+  to: '/' | '/layout' | '/login' | '/register' | '/posts' | '/posts/$postid'
+  id:
+    | '__root__'
+    | '/'
+    | '/_protected/layout'
+    | '/_public/login'
+    | '/_public/register'
+    | '/_protected/posts/'
+    | '/_protected/posts/$postid/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  ProtectedLayoutRoute: typeof ProtectedLayoutRoute
   PublicLoginRoute: typeof PublicLoginRoute
+  PublicRegisterRoute: typeof PublicRegisterRoute
+  ProtectedPostsIndexRoute: typeof ProtectedPostsIndexRoute
+  ProtectedPostsPostidIndexRoute: typeof ProtectedPostsPostidIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public/register': {
+      id: '/_public/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof PublicRegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/login': {
@@ -82,13 +126,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/layout': {
+      id: '/_protected/layout'
+      path: '/layout'
+      fullPath: '/layout'
+      preLoaderRoute: typeof ProtectedLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected/posts/': {
+      id: '/_protected/posts/'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof ProtectedPostsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected/posts/$postid/': {
+      id: '/_protected/posts/$postid/'
+      path: '/posts/$postid'
+      fullPath: '/posts/$postid'
+      preLoaderRoute: typeof ProtectedPostsPostidIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  ProtectedLayoutRoute: ProtectedLayoutRoute,
   PublicLoginRoute: PublicLoginRoute,
+  PublicRegisterRoute: PublicRegisterRoute,
+  ProtectedPostsIndexRoute: ProtectedPostsIndexRoute,
+  ProtectedPostsPostidIndexRoute: ProtectedPostsPostidIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

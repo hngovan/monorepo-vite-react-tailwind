@@ -17,13 +17,14 @@
     "typecheck": "tsc --build"
   },
   "dependencies": {
-    "@inu/ui": "workspace:*",
     "@radix-ui/react-icons": "catalog:",
+    "@inu/ui": "workspace:*",
+    "@inu/auth": "workspace:*",
     "@tailwindcss/vite": "catalog:",
     "@tanstack/react-form": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@tanstack/react-router": "catalog:",
-    "@tanstack/router-devtools": "catalog:",
+    "@tanstack/react-router-devtools": "catalog:",
     "dotenv-cli": "catalog:",
     "next-themes": "catalog:",
     "react": "catalog:",
@@ -34,6 +35,7 @@
   },
   "prettier": "@inu/prettier-config",
   "devDependencies": {
+    "@inu/api": "workspace:*",
     "@inu/eslint-config": "workspace:*",
     "@inu/prettier-config": "workspace:*",
     "@inu/tailwind-config": "workspace:*",

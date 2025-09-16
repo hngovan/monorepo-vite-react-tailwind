@@ -1,0 +1,55 @@
+{
+  "name": "@inu/db",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/src/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema": {
+      "types": "./dist/src/schema.d.ts",
+      "default": "./src/schema.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc --build tsconfig.package.json",
+    "env:copy-example": "shx -- cp -n .env.example .env",
+    "env:remove": "shx -- rm -f .env",
+    "env:run": "dotenv --",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "bun env:run drizzle-kit push",
+    "studio": "bun env:run drizzle-kit studio",
+    "typecheck": "tsc --build --noEmit --emitDeclarationOnly false"
+  },
+  "prettier": "@inu/prettier-config",
+  "dependencies": {
+    "drizzle-orm": "catalog:",
+    "drizzle-valibot": "catalog:",
+    "pg": "catalog:",
+    "valibot": "catalog:"
+  },
+  "devDependencies": {
+    "@inu/eslint-config": "workspace:*",
+    "@inu/prettier-config": "workspace:*",
+    "@inu/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/pg": "catalog:",
+    "drizzle-kit": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "shx": "catalog:",
+    "tsx": "catalog:"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,4 @@
+[?9001h[?1004h[?25l[2J[m[35m[2m[H$[m[1m[2m[1Cprettier --check . --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache --write
+]0;C:\Users\admin\.bun\bin\bun.exe[?25h[22mChecking formatting...
+components.jsoneslint.config.js[K[K[KREADME.md[Ksrc/components/avatar.tsx[Ksrc/components/button.tsx[K[25Csrc/components/dialog.tsx[K[25Csrc/components/dropdown-menu.tsx[K[32Csrc/components/input.tsx[K[24Csrc/components/label.tsx[K[24Csrc/components/textarea.tsx[K[27Csrc/components/toaster.tsx[K[26C[K[26Csrc/lib/utils.ts[K[16Ctsconfig.jsonAll matched files use Prettier code style![K
+[?9001l[?1004l
