@@ -1,10 +1,12 @@
 import './index.css'
+import { QueryClientProvider } from '@tanstack/react-query' // 👈 Thêm dòng này
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { ThemeProvider } from 'next-themes'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
 // Import the generated route tree
+import { queryClient } from './clients/queryClient' // 👈 Thêm dòng này
 import { routeTree } from './routeTree.gen'
 
 // Create a new router instance
@@ -30,7 +32,9 @@ if (!rootElement.innerHTML) {
         enableSystem
         disableTransitionOnChange
       >
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </ThemeProvider>
     </StrictMode>
   )

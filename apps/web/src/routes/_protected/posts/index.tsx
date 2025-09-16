@@ -44,6 +44,7 @@ export const Route = createFileRoute('/_protected/posts/')({
     return (
       <div className='flex w-full flex-col items-center gap-y-3'>
         <div>{error.message}</div>
+        <div>{error.stack}</div>
       </div>
     )
   }
