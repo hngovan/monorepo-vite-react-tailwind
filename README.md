@@ -56,13 +56,13 @@ Ensure the following tools are available on your system:
 
 ```bash
 # Install all dependencies for apps and packages
-pnpm install
+bun install
 
 # Copy .env.example to .env for all applications and the @repo/db package
-pnpm env:copy-example
+bun env:copy-example
 
 # Push the drizzle schema to your database
-pnpm db:push
+bun db:push
 ```
 
 You can then start all applications with
