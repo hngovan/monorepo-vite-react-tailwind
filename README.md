@@ -1,13 +1,17 @@
-# monorepo-vite-react-tailwind
-
-To install dependencies:
+# Setup
 
 ```bash
-bun install
+# Install all dependencies for apps and packages
+pnpm install
+
+# Copy .env.example to .env for all applications and the @repo/db package
+pnpm env:copy-example
+
+# Push the drizzle schema to your database
+pnpm db:push
 ```
 
-To run:
-
+You can then start all applications with
 ```bash
 bun dev
 ```
