@@ -1,4 +1,0 @@
-[?9001h[?1004h[?25l[2J[m[35m[2m[H$[m[1m[2m[1Cprettier --check . --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache --write
-]0;C:\Users\admin\.bun\bin\bun.exe[?25h[22mChecking formatting...
-.env.example[K[12C[K[17Cindex.ts[K[Ksrc/client.ts[K[K[12Csrc/schema.ts[Ksrc/schemas/auth.ts[K[19Csrc/schemas/posts.ts[K[20Ctsconfig.drizzlekit.json[K[24Ctsconfig.json[K[13Ctsconfig.package.jsonturbo.json[K[K[10CAll matched files use Prettier code style!
-[?9001l[?1004l
