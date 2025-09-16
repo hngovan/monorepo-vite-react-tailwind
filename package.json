@@ -3,8 +3,12 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "auth:schema:generate": "turbo run auth:schema:generate",
+    "postauth:schema:generate": "echo NOTE: you will also need to fix styles and db:push your new schema",
     "build": "turbo run build",
     "clean": "rm -rf node_modules",
+    "db:push": "turbo -F @inu/db push",
+    "db:studio": "turbo -F @inu/db studio",
     "dev": "turbo watch dev --continue",
     "env:copy-example": "turbo run env:copy-example",
     "env:remove": "turbo run env:remove",

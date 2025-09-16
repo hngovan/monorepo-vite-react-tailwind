@@ -50,6 +50,13 @@
         ".cache/tsbuildinfo.json"
       ]
     },
+    "push": {
+      "env": [
+        "DB_POSTGRES_URL"
+      ],
+      "cache": false,
+      "interactive": true
+    },
     "start": {
       "dependsOn": [
         "^build"
@@ -70,9 +77,7 @@
       "cache": false
     }
   },
-  "globalDependencies": [
-    "**/.env.*local"
-  ],
+  "globalEnv": [],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "CI",
